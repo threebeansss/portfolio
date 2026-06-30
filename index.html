@@ -52,7 +52,7 @@
             background: var(--color-void);
             border-radius: 80px;
             position: relative;
-            padding: 50px 80px;
+            padding: 2vw 3vw;
             box-shadow: 
                 0 0 100px rgba(0, 0, 0, 1),
                 inset 0 0 40px rgba(153, 51, 255, 0.1);
@@ -196,6 +196,7 @@
             z-index: 5;
             background: var(--dither-pattern);
             background-size: 20px 20px;
+			padding-bottom: 50px;
         }
 
         .flow-bg {
@@ -220,7 +221,7 @@
 
         .hero-title {
             font-family: 'Bungee', cursive;
-            font-size: 180px;
+            font-size: 10vw;
             color: var(--color-core-sun);
             line-height: 0.8;
             text-shadow: 
@@ -298,7 +299,7 @@
             width: 100%; height: 100%;
             object-fit: cover;
             border-radius: 110px;
-            filter: grayscale(0.5) contrast(1.2) brightness(0.8);
+           // filter: grayscale(0.5) contrast(1.2) brightness(0.8);
             border: 2px solid var(--color-plasma-blue);
         }
 
@@ -429,7 +430,7 @@
       
         /* --- QUEST GRID --- */
         .quest-section {
-            padding: 120px 80px;
+            padding: 4vw 3vw;
             background: var(--dither-pattern);
             background-size: 10px 10px;
             border-top: 1px solid var(--glass-border);
@@ -509,6 +510,47 @@
         }
 
         @keyframes bounce { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
+
+        /* --- GALLERY SCROLL --- */
+        .gallery-card {
+            background: rgba(10, 10, 20, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px 50px;
+            border-radius: 12px;
+            transition: 0.3s;
+            min-width: 0;
+            overflow: hidden;
+        }
+        .gallery-card:hover { border-color: var(--color-plasma-blue); }
+
+        .gallery-scroll-wrap {
+            overflow-x: auto;
+            display: flex;
+            gap: 20px;
+            padding-bottom: 12px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-plasma-blue) transparent;
+        }
+        .gallery-scroll-wrap::-webkit-scrollbar { height: 4px; }
+        .gallery-scroll-wrap::-webkit-scrollbar-track { background: transparent; }
+        .gallery-scroll-wrap::-webkit-scrollbar-thumb { background: var(--color-plasma-blue); border-radius: 2px; }
+
+        .gallery-img {
+            height: 240px;
+            width: 427px;
+            flex-shrink: 0;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #222;
+            transition: 0.3s;
+            filter: brightness(0.8);
+        }
+        .gallery-img:hover {
+            filter: brightness(1);
+            border-color: var(--color-plasma-blue);
+            box-shadow: 0 0 20px rgba(0, 204, 255, 0.4);
+            transform: scale(1.03);
+        }
     </style>
 
 <style>
@@ -531,6 +573,7 @@
             z-index: 1;
             filter: blur(100px);
 			overflow: hidden;
+            pointer-events: none;
         }
 
         .orb {
@@ -739,9 +782,9 @@
                 </div>
                
 				<!-- Floating Stickers -->
-				<div class="sticker-node" style="top: 45%; left: 8%; border-color: var(--color-plasma-yellow); color: var(--color-plasma-yellow);">Game dev</div>
+				<div class="sticker-node" style="top: 65%; left: 8%; border-color: var(--color-plasma-yellow); color: var(--color-plasma-yellow);">Game dev</div>
 				<div class="sticker-node" style="bottom: 12%; right: 18%; border-color: var(--color-plasma-orange); color: var(--color-plasma-orange);">Unity</div>
-				<div class="sticker-node" style="bottom: 40%; left: 2%; border-color: var(--color-plasma-pink); color: var(--color-plasma-pink);">❤ Game UI</div>
+				<div class="sticker-node" style="bottom: 2%; left: 2%; border-color: var(--color-plasma-pink); color: var(--color-plasma-pink);">❤ Game UI</div>
 				<div class="sticker-node" style="top: 52%; right: 2%; border-color: var(--color-plasma-yellow); color: var(--color-plasma-yellow);">Optimization</div>
 				<div class="sticker-node" style="bottom: 12%; left: 6%;">AI agents & workflows</div>
 				<div class="sticker-node" style="bottom: 18%; right: 5%;">Mobile games</div>
@@ -776,7 +819,7 @@
                 <div class="crew-grid">
                     <div class="crew-card">
                         <div class="avatar-wrap">
-                            <img src="https://avatars.fastly.steamstatic.com/b3c7b89d1971bd17d8b5a7dceaf045f594accdec_full.jpg" alt="DD">
+                            <img src="https://media.licdn.com/dms/image/v2/D5603AQHivRqbM5DggQ/profile-displayphoto-scale_400_400/B56ZynzUEdK0Ag-/0/1772341773162?e=1784160000&v=beta&t=9wIpPHfW7R8tWmdeD46qXTFQq654Y3CBXCXP1iMY44M" alt="DD">
                             <div class="role-tag">Creative Game Developer & Designer</div>
                         </div>
                         <h3 class="crew-name">Đạt Đỗ</h3>
@@ -786,73 +829,28 @@
 
                     <div class="crew-card">
                         <div class="avatar-wrap">
-                            <img src="https://i1.sndcdn.com/avatars-000161029680-ry61ah-t1080x1080.jpg" alt="YUN">
-                            <div class="role-tag">Project Manager / Coordinator</div>
+                            <img src="./img/member2.png" alt="YUN">
+                            <div class="role-tag">Project Manager & Coordinator</div>
                         </div>
                         <h3 class="crew-name">Dung Phan</h3>
-                        <p class="crew-quote">"There is no way to happiness, happiness is the way. Lore is eternal."</p>
+                        <p class="crew-quote">"There is no way to happiness, happiness is the way." by Thích Nhất Hạnh</p>
                        
                     </div>
 
                     <div class="crew-card">
                         <div class="avatar-wrap">
-                            <img src="https://avatars.fastly.steamstatic.com/570e552b45b5e8b873fabfc84d636ecb2444490d_full.jpg" alt="CHAO">
-                            <div class="role-tag">UI/UX Vision Architect & Business Analyst </div>
+                            <img src="./img/member3.png" alt="CHAO">
+                            <div class="role-tag">UI/UX Vision Architect & Product Owner </div>
                         </div>
                         <h3 class="crew-name">Châu Xuyên</h3>
-                        <p class="crew-quote">"I want to make beautiful things, even if nobody cares. Design is life."</p>                      
-                    </div>
-                </div>
-            </section>
-
-            <!-- TIMELINE SECTION -->
-            <section class="timeline-section">
-                <h2 class="timeline-header section-label">Teammate over 10 years</h2>
-                
-                <div class="timeline-rail-wrap">
-                    <div class="timeline-rail">
-                        <!-- 2016 -->
-                        <div class="timeline-marker">
-                            <div class="timeline-year">2016</div>
-                            <div class="timeline-item"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2319360/header.jpg?t=1782034606"></div>
-                        </div>
-                        
-                        <!-- 2021 -->
-                        <div class="timeline-marker">
-                            <div class="timeline-year">2021</div>
-                            <div class="timeline-item"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2319360/header.jpg?t=1782034606"></div>
-                        </div>
-                        
-                        <!-- 2022 -->
-                        <div class="timeline-marker">
-                            <div class="timeline-year">2022</div>
-                            <div class="timeline-item"><img src="img/img-blank.png"></div>
-                        </div>
-                        
-                        <!-- 2023 -->
-                        <div class="timeline-marker">
-                            <div class="timeline-year">2023</div>
-                            <div class="timeline-item"><img src="img/img-blank.png"></div>
-                        </div>
-                        
-                        <!-- 2024 -->
-                        <div class="timeline-marker">
-                            <div class="timeline-year">2024</div>
-                            <div class="timeline-item"><img src="img/img-blank.png"></div>
-                        </div>
-                        
-                        <!-- 2026 -->
-                        <div class="timeline-marker">
-                            <div class="timeline-year">2026</div>
-                            <div class="timeline-item"><img src="img/img-blank.png"></div>
-                        </div>
+                        <p class="crew-quote">"“I want to make beautiful things, even if nobody cares.” by Saul Bass</p>                      
                     </div>
                 </div>
             </section>
 
             <!-- Mission Log -->
             <section class="quest-section">
-                <h2 class="section-label">MISSION LOG</h2>
+                <h2 class="section-label">Teammate Over 10 Years</h2>
                 <div class="history-tag">Project History // 2011-2026</div>
                   
                 <div class="quest-grid">
@@ -864,9 +862,18 @@
 						</div>
                         <div class="quest-info">
                             <div>
-							    <span class="quest-type">Puzzle Logic Grid-Based Movement</span>
+                                <div class="quest-type-row">
+                                    <span class="quest-type" style="background: var(--color-plasma-blue);">Puzzle</span><span class="quest-type" style="background: var(--color-plasma-blue);">Logic</span>
+                                    <span class="quest-type" style="background: var(--color-plasma-blue);">Single Player</span>
+                                </div>
+                                <div class="quest-subtitle">Developer: DepaGames</div>
 								<h3 class="quest-title">Memento Dawn</h3>
-								<p class="quest-desc">A high-energy rhythm adventure set against a neon lunar landscape. Hit the beats and sync your soul!</p>
+								<p class="quest-desc">Một tựa game giải đố với cơ chế gameplay ánh sáng và bóng tối độc đáo siêu hack não, kết hợp với một cốt truyện nhẹ nhàng trên nền đồ họa sinh động.</p>
+                                <ul class="quest-meta-list">
+                                    <li>Full Development</li>
+                                    <li>Platform: Steam</li>
+                                    <li>Release: Oct 2026</li>
+                                </ul>
 								<a target="_blank" href="https://store.steampowered.com/app/2319360/Memento_Dawn/" class="btn-play">STEAM</a>
                             </div>
                         </div>
@@ -877,19 +884,19 @@
                         <div class="quest-info">
                              <div>
                                  <div class="quest-type-row">
-                                     <span class="quest-type" style="background: var(--color-plasma-pink);">Open World</span><span class="quest-type" style="background: var(--color-plasma-pink);">Action RPG</span>
-                                     <span class="quest-type" style="background: var(--color-plasma-pink);">Exploration</span><span class="quest-type" style="background: var(--color-plasma-pink);">Japanese-style RPG (JRPG)</span><span class="quest-type" style="background: var(--color-plasma-pink);">Single Player</span>
+                                     <span class="quest-type" style="background: var(--color-plasma-pink);">Open World</span><span class="quest-type" style="background: var(--color-plasma-pink);">Action JRPG</span>
+                                     <span class="quest-type" style="background: var(--color-plasma-pink);">Single Player</span>
                                  </div>
-                                 <div class="quest-subtitle">Keymember in “GOKEN”</div>
+                                 <div class="quest-subtitle">Developer: GIANTY Inc.</div>
                                  <h3 class="quest-title">GOKEN</h3>
-                                 <p class="quest-desc">GOKEN là dự án Action RPG thế giới mở với đội ngũ sản xuất gồm khoảng 95% nhân sự Việt Nam. Mặc dù sản phẩm được phát hành dưới thương hiệu Nhật Bản, tựa game vẫn mang đậm tinh thần và bản sắc Việt Nam trong cách kể chuyện, thiết kế thế giới và trải nghiệm gameplay — một "tâm hồn Việt" được truyền tải xuyên suốt dự án.</p>
+                                 <p class="quest-desc">GOKEN là một game nhập vai hành động, nơi bạn sẽ vào cuộc tìm kiếm năm thanh kiếm bị thất lạc và có thể cả việc cứu thế giới nữa.</p>
                                  <ul class="quest-meta-list">
-                                     <li>Phát triển trọn gói từ Art, Story đến Game Development & Operation</li>
-                                     <li>Phát hành toàn cầu trên Steam và Nintendo Switch</li>
-                                     <li>Được giới thiệu tại E3 2017</li>
+                                     <li>Full Development & Operation</li>
+                                     <li>Platform: Steam & Nintendo Switch</li>
                                      <li>Release: 28/03/2019</li>
                                  </ul>
-                                 <a href="https://store.steampowered.com/app/671260/GOKEN/" class="btn-play" target="_blank">LAUNCH STEAM LOG</a>
+                                 <a href="https://store.steampowered.com/app/671260/GOKEN/" class="btn-play" target="_blank">STEAM</a>
+                                 <a href="https://www.nintendo.com/us/store/products/goken-switch/" class="btn-play" target="_blank">NINTENDO SWITCH</a>
                              </div>
                          </div>
                      </div>
@@ -902,15 +909,16 @@
                                     <span class="quest-type" style="background: var(--color-plasma-orange);">Monster Collection</span>
                                     <span class="quest-type" style="background: var(--color-plasma-orange);">RPG</span>
                                     <span class="quest-type" style="background: var(--color-plasma-orange);">Multiplayer</span>
-                                    <span class="quest-type" style="background: var(--color-plasma-orange);">PvP/Co-op</span>
+                                    <span class="quest-type" style="background: var(--color-plasma-orange);">Collection</span>
                                 </div>
-                                <div class="quest-subtitle">Development in “Monster Drive Revolution”</div>
+                                <div class="quest-subtitle">Developer: GIANTY Inc.</div>
                                 <h3 class="quest-title">Monster Drive Revolution</h3>
                                 <p class="quest-desc">Game RPG thu thập và huấn luyện quái vật dành cho nền tảng di động. Hỗ trợ Co-op/PVP tối đa 4 người chơi cùng lúc với hệ thống kỹ năng chuyên sâu.</p>
                                 <ul class="quest-meta-list">
-                                    <li>Release: 2015 (iOS & Android)</li>
-                                    <li>Market: Japan Exclusive</li>
-                                    <li>Multiplayer: Max 4 players</li>
+									 <li>Full Development & Operation</li>
+                                    <li>Release: 2015</li>
+                                    <li>Platform: iOS & Android</li>
+                                    <li>Multiplayer: 4 players</li>
                                     <li>Character Collection & Skill Building</li>
                                 </ul>
                                 <a target="_blank" href="https://www.youtube.com/watch?v=ShmrUo1lVn8" class="btn-play">Video Archive</a>
@@ -924,22 +932,36 @@
                                 <div class="quest-type-row">
                                     <span class="quest-type" style="background: var(--color-plasma-yellow);">Casual</span>
                                     <span class="quest-type" style="background: var(--color-plasma-yellow);">Arcade</span>
-                                    <span class="quest-type" style="background: var(--color-plasma-yellow);">Sci-Fi Battle</span>
+                                    <span class="quest-type" style="background: var(--color-plasma-yellow);">Tower Defense</span>
                                     <span class="quest-type" style="background: var(--color-plasma-yellow);">Comedy</span>
                                 </div>
-                                <div class="quest-subtitle">Development in “AKKO”</div>
+                                <div class="quest-subtitle">Developer: GIANTY Inc.</div>
                                 <h3 class="quest-title">AKKO</h3>
                                 <p class="quest-desc">Game mobile lấy cảm hứng từ hình tượng nghệ sĩ Wada Akiko. Nội dung xoay quanh những trận chiến không gian mang phong cách hài hước và giải trí đặc trưng của Nhật Bản.</p>
                                 <ul class="quest-meta-list">
-                                    <li>Release: 2014 (Smartphone)</li>
-                                    <li>Market: Japan (iOS / Android)</li>
-                                    <li>Theme: Space Battle & Comedy</li>
-                                    <li>Character-based Arcade Battle</li>
+								     <li>Full Development & Operation</li>
+                                    <li>Release: 2014</li>
+                                    <li>Platform: iOS / Android</li>
                                 </ul>
                                 <a target="_blank" href="https://mobigame.jp/akko/" class="btn-play">Landing Page</a>
                             </div>
                         </div>
                     </div>
+
+                    <!-- GALLERY CARD -->
+                    <div class="gallery-card">
+                        <div class="quest-type-row" style="margin-bottom: 25px;">
+                            <span class="quest-type">Other</span>
+                        </div>
+                        <h3 class="quest-title" style="margin-bottom: 30px;">And many more</h3>
+                        <div class="gallery-scroll-wrap">
+                            <img class="gallery-img" src="https://media.licdn.com/dms/image/v2/C562DAQGR7Wcfwkp-0w/profile-treasury-image-shrink_480_480/profile-treasury-image-shrink_480_480/0/1598965763088?e=1783440000&v=beta&t=ThaGEMphec8ZPlf-beOAeKsHus8XkHtzYTExv0-gWJE" alt="">
+                            <img class="gallery-img" src="https://media.licdn.com/dms/image/v2/C562DAQEW6XnAKeQmrw/profile-treasury-image-shrink_480_480/profile-treasury-image-shrink_480_480/0/1637981115251?e=1783440000&v=beta&t=bAt8BpG37yxcJd3VJCCND_YzzuqemsG-2BEX5rEDc3w" alt="">
+                            <img class="gallery-img" src="https://media.licdn.com/dms/image/v2/C562DAQHCMhUEPopYjA/profile-treasury-image-shrink_480_480/profile-treasury-image-shrink_480_480/0/1601812042050?e=1783440000&v=beta&t=Xjsn2WSQg-NQPyxq_DmBfc-EUKYiUDrTm1ELWK2gKaQ" alt="">
+                            <img class="gallery-img" src="https://media.licdn.com/dms/image/v2/C562DAQExdW257BAT9Q/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1669100301960?e=1783440000&v=beta&t=V-X9u9YIkeSVw2dHsw-iNZyc9vGZjJucXaHjkDYc3o0" alt="">
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
